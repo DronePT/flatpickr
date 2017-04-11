@@ -1140,7 +1140,7 @@ function Flatpickr(element, config) {
 		toggleClass(self.calendarContainer, "arrowTop", !showOnTop);
 		toggleClass(self.calendarContainer, "arrowBottom", showOnTop);
 
-		if (self.config.inline) return;
+		if (self.config.inline || self.config.appendTo) return;
 
 		var left = window.pageXOffset + inputBounds.left;
 		var right = window.document.body.offsetWidth - inputBounds.right;
