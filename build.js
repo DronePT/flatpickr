@@ -175,7 +175,7 @@ function setupWatchers(){
 
 function serve(){
     livereload.createServer().watch("./dist");
-    server.createServer().listen(8080);
+    server.createServer().listen(8081);
 }
 
 function watch(path, cb){
@@ -194,7 +194,7 @@ function start(){
     if (devMode) {
         setupWatchers();
         serve();
-        opn("http://localhost:8080");
+        opn("http://localhost:8081");
     }
 
     else {

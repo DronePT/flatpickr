@@ -1438,7 +1438,11 @@ function Flatpickr(element, config) {
 				&& inputBounds.top > calendarHeight
 			);
 
-		let top = (window.pageYOffset + inputBounds.top) + (!showOnTop
+		const topStartingPoint = self.config.appendTo 
+			? 0 
+			: (window.pageYOffset + inputBounds.top);
+
+		let top = topStartingPoint + (!showOnTop
 			? (input.offsetHeight + 2)
 			: (- calendarHeight - 2)
 		);
@@ -1446,10 +1450,14 @@ function Flatpickr(element, config) {
 		toggleClass(self.calendarContainer, "arrowTop", !showOnTop);
 		toggleClass(self.calendarContainer, "arrowBottom", showOnTop);
 
-		if (self.config.inline || self.config.appendTo)
+		if (self.config.inline)
 			return;
 
-		const left = window.pageXOffset + inputBounds.left;
+		const leftStartingPoint = self.config.appendTo
+			? 0
+			: (window.pageYOffset + inputBounds.left)
+
+		const left = leftStartingPoint;
 		const right = window.document.body.offsetWidth - inputBounds.right;
 		const rightMost = left + calendarWidth > window.document.body.offsetWidth;
 
